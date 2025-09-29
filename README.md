@@ -96,22 +96,13 @@ Notes:
 3. **Configure environment variables**
    Create a `.env` file in the root directory:
    ```env
-   # Database Configuration
-   DB_SERVER=localhost
-   DB_DATABASE=Ticketly
-   DB_USER=your_username
-   DB_PASSWORD=your_password
-   DB_PORT=1433
-   DB_ENCRYPT=true
-   DB_TRUST_SERVER_CERTIFICATE=true
-
-   # JWT Configuration
-   JWT_SECRET=your_super_secret_jwt_key_here
-   JWT_EXPIRE=7d
-
-   # Server Configuration
-   PORT=5000
-   NODE_ENV=development
+   DB_SERVER=localhost\SQLEXPRESS
+DB_NAME=Ticketly
+DB_USER=sa
+DB_PASSWORD=YourSecurePassword123!
+DB_TRUST_SERVER_CERT=true
+DB_ENCRYPT=false
+JWT_SECRET=thisisaverylongstring
    ```
 
 4. **Set up the database**
