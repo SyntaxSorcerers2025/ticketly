@@ -1,0 +1,31 @@
+import axios from 'axios';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+const api = axios.create({
+  baseURL: API_URL,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+
+// Add token to requests
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export const updateService = {
+  getUpdates: async (ticketId) => {
+    const response = await api.get(`/updates/ticket/${ticketId}`);
+    return response.data;
+  },
+
+  addUpdate: async (ticketId, message) => {
+    const response = await api.post('/updates', { ticketId, message });
+    return response.data;
+  }
+};
