@@ -142,8 +142,8 @@ const TicketDetails = () => {
   if (!ticket) {
     return (
       <div className="text-center py-12">
-        <h1 className="text-2xl font-bold text-secondary-900 mb-4">Ticket Not Found</h1>
-        <p className="text-secondary-600 mb-4">The ticket you're looking for doesn't exist or you don't have access to it.</p>
+        <h1 className="text-2xl font-bold text-secondary-900 mb-4 dark:text-secondary-100">Ticket Not Found</h1>
+        <p className="text-secondary-600 mb-4 dark:text-secondary-300">The ticket you're looking for doesn't exist or you don't have access to it.</p>
         <button onClick={() => navigate('/tickets')} className="btn-primary">
           Back to Tickets
         </button>
@@ -162,7 +162,7 @@ const TicketDetails = () => {
         <div className="flex items-center space-x-2">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center space-x-2 text-secondary-600 hover:text-primary-600"
+            className="flex items-center space-x-2 text-secondary-600 hover:text-primary-600 dark:text-secondary-300"
           >
             <ArrowLeft className="h-5 w-5" />
             <span>Back</span>
@@ -223,43 +223,43 @@ const TicketDetails = () => {
           {/* Ticket Details */}
           <div className="card">
             <div className="flex items-start justify-between mb-4">
-              <h1 className="text-2xl font-bold text-secondary-900">{ticket.title}</h1>
-              <span className="text-sm text-secondary-500">#{ticket.ticket_id}</span>
+              <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{ticket.title}</h1>
+              <span className="text-sm text-secondary-500 dark:text-secondary-400">#{ticket.ticket_id}</span>
             </div>
             
             <div className="prose max-w-none">
-              <p className="text-secondary-700 whitespace-pre-wrap">{ticket.description}</p>
+              <p className="text-secondary-700 whitespace-pre-wrap dark:text-secondary-300">{ticket.description}</p>
             </div>
           </div>
 
           {/* Updates */}
           <div className="card">
-            <h2 className="text-lg font-semibold text-secondary-900 mb-4 flex items-center">
+            <h2 className="text-lg font-semibold text-secondary-900 mb-4 flex items-center dark:text-secondary-100">
               <MessageSquare className="h-5 w-5 mr-2" />
               Updates ({updates.length})
             </h2>
 
             {updates.length === 0 ? (
-              <div className="text-center py-8 text-secondary-500">
+              <div className="text-center py-8 text-secondary-500 dark:text-secondary-400">
                 <MessageSquare className="h-12 w-12 mx-auto mb-4 text-secondary-300" />
                 <p>No updates yet. Be the first to add a comment!</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {updates.map((update) => (
-                  <div key={update.update_id} className="border-l-4 border-primary-200 pl-4 py-2">
+                  <div key={update.update_id} className="border-l-4 border-primary-200 pl-4 py-2 dark:border-primary-300/40">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center space-x-2">
-                        <User className="h-4 w-4 text-secondary-500" />
-                        <span className="font-medium text-secondary-900">
+                        <User className="h-4 w-4 text-secondary-500 dark:text-secondary-400" />
+                        <span className="font-medium text-secondary-900 dark:text-secondary-100">
                           {update.first_name} {update.last_name}
                         </span>
                       </div>
-                      <span className="text-sm text-secondary-500">
+                      <span className="text-sm text-secondary-500 dark:text-secondary-400">
                         {new Date(update.created_at).toLocaleString()}
                       </span>
                     </div>
-                    <p className="text-secondary-700 whitespace-pre-wrap">{update.message}</p>
+                    <p className="text-secondary-700 whitespace-pre-wrap dark:text-secondary-300">{update.message}</p>
                   </div>
                 ))}
               </div>
@@ -269,7 +269,7 @@ const TicketDetails = () => {
             <form onSubmit={handleAddUpdate} className="mt-6 pt-6 border-t border-secondary-200">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="update" className="block text-sm font-medium text-secondary-700 mb-2">
+              <label htmlFor="update" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
                     Add Update
                   </label>
                   <textarea
@@ -301,22 +301,22 @@ const TicketDetails = () => {
         <div className="space-y-6">
           {/* Ticket Info */}
           <div className="card">
-            <h3 className="text-lg font-semibold text-secondary-900 mb-4">Ticket Information</h3>
+            <h3 className="text-lg font-semibold text-secondary-900 mb-4 dark:text-secondary-100">Ticket Information</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-secondary-600">Category</label>
-                <p className="text-secondary-900">{getCategoryName(ticket.category)}</p>
+                <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Category</label>
+                <p className="text-secondary-900 dark:text-secondary-100">{getCategoryName(ticket.category)}</p>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-secondary-600">Priority</label>
+                <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Priority</label>
                 <span className={`priority-badge ${priorityInfo.color}`}>
                   {priorityInfo.text}
                 </span>
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-secondary-600">Status</label>
+                <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Status</label>
                 <span className={`status-badge ${statusInfo.color}`}>
                   <StatusIcon className="h-3 w-3 mr-1" />
                   {statusInfo.text}
@@ -324,8 +324,8 @@ const TicketDetails = () => {
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-secondary-600">Created</label>
-                <p className="text-secondary-900 flex items-center">
+                <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Created</label>
+                <p className="text-secondary-900 flex items-center dark:text-secondary-100">
                   <Calendar className="h-4 w-4 mr-1" />
                   {new Date(ticket.created_at).toLocaleDateString()}
                 </p>
@@ -333,8 +333,8 @@ const TicketDetails = () => {
               
               {ticket.updated_at && ticket.updated_at !== ticket.created_at && (
                 <div>
-                  <label className="block text-sm font-medium text-secondary-600">Last Updated</label>
-                  <p className="text-secondary-900 flex items-center">
+                  <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Last Updated</label>
+                  <p className="text-secondary-900 flex items-center dark:text-secondary-100">
                     <Calendar className="h-4 w-4 mr-1" />
                     {new Date(ticket.updated_at).toLocaleDateString()}
                   </p>

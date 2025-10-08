@@ -67,10 +67,10 @@ const Dashboard = () => {
       <div className="card">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-secondary-900">
+            <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">
               Welcome back, {user?.firstName || user?.first_name}!
             </h1>
-            <p className="text-secondary-600 mt-1">
+            <p className="text-secondary-600 mt-1 dark:text-secondary-300">
               {getRoleName(user?.role)} Dashboard
             </p>
           </div>
@@ -91,8 +91,8 @@ const Dashboard = () => {
               <Ticket className="h-6 w-6 text-blue-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-secondary-600">Total Tickets</p>
-              <p className="text-2xl font-bold text-secondary-900">{tickets.length}</p>
+              <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Total Tickets</p>
+              <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{tickets.length}</p>
             </div>
           </div>
         </div>
@@ -103,8 +103,8 @@ const Dashboard = () => {
               <CheckCircle className="h-6 w-6 text-green-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-secondary-600">Resolved</p>
-              <p className="text-2xl font-bold text-secondary-900">
+              <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Resolved</p>
+              <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">
                 {tickets.filter(t => t.status === 3 || t.status === 4).length}
               </p>
             </div>
@@ -117,8 +117,8 @@ const Dashboard = () => {
               <Clock className="h-6 w-6 text-orange-600" />
             </div>
             <div className="ml-4">
-              <p className="text-sm font-medium text-secondary-600">In Progress</p>
-              <p className="text-2xl font-bold text-secondary-900">
+              <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">In Progress</p>
+              <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">
                 {tickets.filter(t => t.status === 2).length}
               </p>
             </div>
@@ -129,7 +129,7 @@ const Dashboard = () => {
       {/* Recent Tickets */}
       <div className="card">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-secondary-900">Recent Tickets</h2>
+          <h2 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">Recent Tickets</h2>
           <Link to="/tickets" className="text-primary-600 hover:text-primary-700 font-medium">
             View all
           </Link>
@@ -138,8 +138,8 @@ const Dashboard = () => {
         {tickets.length === 0 ? (
           <div className="text-center py-8">
             <Ticket className="h-12 w-12 text-secondary-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-secondary-900 mb-2">No tickets yet</h3>
-            <p className="text-secondary-600 mb-4">Create your first support ticket to get started.</p>
+            <h3 className="text-lg font-medium text-secondary-900 mb-2 dark:text-secondary-100">No tickets yet</h3>
+            <p className="text-secondary-600 mb-4 dark:text-secondary-300">Create your first support ticket to get started.</p>
             <Link to="/tickets/create" className="btn-primary">
               Create Ticket
             </Link>
@@ -152,11 +152,11 @@ const Dashboard = () => {
               const StatusIcon = statusInfo.icon;
 
               return (
-                <div key={ticket.ticket_id} className="border border-secondary-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                <div key={ticket.ticket_id} className="border border-secondary-200 rounded-lg p-4 hover:shadow-md transition-shadow dark:border-secondary-700">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-3 mb-2">
-                        <h3 className="text-lg font-medium text-secondary-900">
+                        <h3 className="text-lg font-medium text-secondary-900 dark:text-secondary-100">
                           <Link 
                             to={`/tickets/${ticket.ticket_id}`}
                             className="hover:text-primary-600"
@@ -172,10 +172,10 @@ const Dashboard = () => {
                           {priorityInfo.text}
                         </span>
                       </div>
-                      <p className="text-secondary-600 text-sm mb-2 line-clamp-2">
+                      <p className="text-secondary-600 text-sm mb-2 line-clamp-2 dark:text-secondary-300">
                         {ticket.description}
                       </p>
-                      <div className="flex items-center text-xs text-secondary-500">
+                      <div className="flex items-center text-xs text-secondary-500 dark:text-secondary-400">
                         <span>Created {new Date(ticket.created_at).toLocaleDateString()}</span>
                         {ticket.assigned_to && (
                           <>

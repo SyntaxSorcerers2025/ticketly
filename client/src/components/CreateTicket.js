@@ -55,20 +55,20 @@ const CreateTicket = () => {
       <div className="mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center space-x-2 text-secondary-600 hover:text-primary-600 mb-4"
+          className="flex items-center space-x-2 text-secondary-600 hover:text-primary-600 mb-4 dark:text-secondary-300"
         >
           <ArrowLeft className="h-5 w-5" />
           <span>Back</span>
         </button>
-        <h1 className="text-2xl font-bold text-secondary-900">Create New Ticket</h1>
-        <p className="text-secondary-600 mt-1">Describe your IT issue and we'll help you resolve it.</p>
+        <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Create New Ticket</h1>
+        <p className="text-secondary-600 mt-1 dark:text-secondary-300">Describe your IT issue and we'll help you resolve it.</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="card">
           <div className="space-y-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-secondary-700 mb-2">
+              <label htmlFor="title" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
                 Ticket Title *
               </label>
               <input
@@ -82,13 +82,13 @@ const CreateTicket = () => {
                 placeholder="Brief description of the issue"
                 maxLength={200}
               />
-              <p className="text-xs text-secondary-500 mt-1">
+              <p className="text-xs text-secondary-500 mt-1 dark:text-secondary-400">
                 {formData.title.length}/200 characters
               </p>
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-secondary-700 mb-2">
+              <label htmlFor="description" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
                 Description *
               </label>
               <textarea
@@ -102,14 +102,14 @@ const CreateTicket = () => {
                 placeholder="Please provide detailed information about the issue, including steps to reproduce if applicable..."
                 maxLength={2000}
               />
-              <p className="text-xs text-secondary-500 mt-1">
+              <p className="text-xs text-secondary-500 mt-1 dark:text-secondary-400">
                 {formData.description.length}/2000 characters
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="priority" className="block text-sm font-medium text-secondary-700 mb-2">
+                <label htmlFor="priority" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
                   Priority *
                 </label>
                 <select
@@ -129,7 +129,7 @@ const CreateTicket = () => {
               </div>
 
               <div>
-                <label htmlFor="category" className="block text-sm font-medium text-secondary-700 mb-2">
+                <label htmlFor="category" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
                   Category *
                 </label>
                 <select

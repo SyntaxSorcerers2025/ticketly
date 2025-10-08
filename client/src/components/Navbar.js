@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, User, Settings, Ticket, Home } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -32,15 +33,16 @@ const Navbar = () => {
 
   if (!isAuthenticated) {
     return (
-      <nav className="bg-white shadow-sm border-b border-secondary-200">
+      <nav className="bg-white shadow-sm border-b border-secondary-200 dark:bg-secondary-900 dark:border-secondary-800">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
               <Ticket className="h-8 w-8 text-primary-600" />
-              <span className="text-xl font-bold text-secondary-900">Ticketly</span>
+              <span className="text-xl font-bold text-secondary-900 dark:text-secondary-100">Ticketly</span>
             </Link>
-            <div className="flex space-x-4">
-              <Link to="/login" className="btn-secondary">
+            <div className="flex space-x-4 items-center">
+              <ThemeToggle />
+              <Link to="/login" className="btn-secondary dark:bg-secondary-700 dark:hover:bg-secondary-600 dark:text-secondary-100">
                 Login
               </Link>
               <Link to="/register" className="btn-primary">
@@ -54,27 +56,27 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white shadow-sm border-b border-secondary-200">
+    <nav className="bg-white shadow-sm border-b border-secondary-200 dark:bg-secondary-900 dark:border-secondary-800">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <Ticket className="h-8 w-8 text-primary-600" />
-            <span className="text-xl font-bold text-secondary-900">Ticketly</span>
+            <span className="text-xl font-bold text-secondary-900 dark:text-secondary-100">Ticketly</span>
           </Link>
 
           <div className="flex items-center space-x-6">
-            <Link to="/" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600">
+            <Link to="/" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">
               <Home className="h-5 w-5" />
               <span>Dashboard</span>
             </Link>
             
-            <Link to="/tickets" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600">
+            <Link to="/tickets" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">
               <Ticket className="h-5 w-5" />
               <span>Tickets</span>
             </Link>
 
             {user?.role === 3 && (
-              <Link to="/admin" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600">
+              <Link to="/admin" className="flex items-center space-x-1 text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400">
                 <Settings className="h-5 w-5" />
                 <span>Admin</span>
               </Link>
@@ -83,19 +85,20 @@ const Navbar = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <div className="flex items-center space-x-2">
-                  <User className="h-5 w-5 text-secondary-500" />
-                  <span className="text-sm text-secondary-700">
+                  <User className="h-5 w-5 text-secondary-500 dark:text-secondary-400" />
+                  <span className="text-sm text-secondary-700 dark:text-secondary-200">
                     {user?.first_name} {user?.last_name}
                   </span>
-                  <span className={`status-badge ${getRoleColor(user?.role)}`}>
+                  <span className={`status-badge ${getRoleColor(user?.role)} dark:bg-secondary-700 dark:text-secondary-200`}>
                     {getRoleName(user?.role)}
                   </span>
                 </div>
               </div>
               
+              <ThemeToggle />
               <button
                 onClick={handleLogout}
-                className="flex items-center space-x-1 text-secondary-600 hover:text-red-600 transition-colors"
+                className="flex items-center space-x-1 text-secondary-600 hover:text-red-600 transition-colors dark:text-secondary-300"
               >
                 <LogOut className="h-5 w-5" />
                 <span>Logout</span>
