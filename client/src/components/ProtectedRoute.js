@@ -21,8 +21,8 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-secondary-900 mb-4">Access Denied</h1>
-          <p className="text-secondary-600">You don't have permission to access this page.</p>
+          <h1 className="text-2xl font-bold text-secondary-900 mb-4 dark:text-secondary-100">Access Denied</h1>
+          <p className="text-secondary-600 dark:text-secondary-300">You don't have permission to access this page.</p>
         </div>
       </div>
     );

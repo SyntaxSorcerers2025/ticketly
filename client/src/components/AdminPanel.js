@@ -96,8 +96,8 @@ const AdminPanel = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-secondary-900">Admin Dashboard</h1>
-          <p className="text-secondary-600 mt-1">Manage tickets, users, and system overview</p>
+          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Admin Dashboard</h1>
+          <p className="text-secondary-600 mt-1 dark:text-secondary-300">Manage tickets, users, and system overview</p>
         </div>
         <div className="flex space-x-2">
           <button
@@ -105,7 +105,7 @@ const AdminPanel = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'overview' 
                 ? 'bg-primary-600 text-white' 
-                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300'
+                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300 dark:bg-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-600'
             }`}
           >
             Overview
@@ -115,7 +115,7 @@ const AdminPanel = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'tickets' 
                 ? 'bg-primary-600 text-white' 
-                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300'
+                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300 dark:bg-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-600'
             }`}
           >
             Tickets
@@ -125,7 +125,7 @@ const AdminPanel = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'users' 
                 ? 'bg-primary-600 text-white' 
-                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300'
+                : 'bg-secondary-200 text-secondary-700 hover:bg-secondary-300 dark:bg-secondary-700 dark:text-secondary-100 dark:hover:bg-secondary-600'
             }`}
           >
             Users
@@ -143,8 +143,8 @@ const AdminPanel = () => {
                   <Ticket className="h-6 w-6 text-blue-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Total Tickets</p>
-                  <p className="text-2xl font-bold text-secondary-900">{stats.total_tickets || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Total Tickets</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{stats.total_tickets || 0}</p>
                 </div>
               </div>
             </div>
@@ -155,8 +155,8 @@ const AdminPanel = () => {
                   <CheckCircle className="h-6 w-6 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Resolved</p>
-                  <p className="text-2xl font-bold text-secondary-900">{stats.resolved_tickets || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Resolved</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{stats.resolved_tickets || 0}</p>
                 </div>
               </div>
             </div>
@@ -167,8 +167,8 @@ const AdminPanel = () => {
                   <Clock className="h-6 w-6 text-orange-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">In Progress</p>
-                  <p className="text-2xl font-bold text-secondary-900">{stats.in_progress_tickets || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">In Progress</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{stats.in_progress_tickets || 0}</p>
                 </div>
               </div>
             </div>
@@ -179,8 +179,8 @@ const AdminPanel = () => {
                   <AlertTriangle className="h-6 w-6 text-red-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Urgent</p>
-                  <p className="text-2xl font-bold text-secondary-900">{stats.urgent_tickets || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Urgent</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{stats.urgent_tickets || 0}</p>
                 </div>
               </div>
             </div>
@@ -194,8 +194,8 @@ const AdminPanel = () => {
                   <Users className="h-6 w-6 text-blue-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Total Users</p>
-                  <p className="text-2xl font-bold text-secondary-900">{userStats.total_users || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Total Users</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{userStats.total_users || 0}</p>
                 </div>
               </div>
             </div>
@@ -206,8 +206,8 @@ const AdminPanel = () => {
                   <UserCheck className="h-6 w-6 text-green-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Teachers</p>
-                  <p className="text-2xl font-bold text-secondary-900">{userStats.teachers || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Teachers</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{userStats.teachers || 0}</p>
                 </div>
               </div>
             </div>
@@ -218,8 +218,8 @@ const AdminPanel = () => {
                   <Settings className="h-6 w-6 text-purple-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-secondary-600">Students</p>
-                  <p className="text-2xl font-bold text-secondary-900">{userStats.students || 0}</p>
+                  <p className="text-sm font-medium text-secondary-600 dark:text-secondary-300">Students</p>
+                  <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">{userStats.students || 0}</p>
                 </div>
               </div>
             </div>
@@ -227,7 +227,7 @@ const AdminPanel = () => {
 
           {/* Recent Tickets */}
           <div className="card">
-            <h3 className="text-lg font-semibold text-secondary-900 mb-4">Recent Tickets</h3>
+            <h3 className="text-lg font-semibold text-secondary-900 mb-4 dark:text-secondary-100">Recent Tickets</h3>
             {tickets.length === 0 ? (
               <p className="text-secondary-500 text-center py-4">No tickets found</p>
             ) : (
@@ -238,13 +238,13 @@ const AdminPanel = () => {
                   const StatusIcon = statusInfo.icon;
 
                   return (
-                    <div key={ticket.ticket_id} className="flex items-center justify-between p-3 border border-secondary-200 rounded-lg">
+                    <div key={ticket.ticket_id} className="flex items-center justify-between p-3 border border-secondary-200 rounded-lg dark:border-secondary-700">
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-1">
-                          <span className="font-medium text-secondary-900">#{ticket.ticket_id}</span>
-                          <span className="text-secondary-600">{ticket.title}</span>
+                          <span className="font-medium text-secondary-900 dark:text-secondary-100">#{ticket.ticket_id}</span>
+                          <span className="text-secondary-600 dark:text-secondary-300">{ticket.title}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-sm text-secondary-500">
+                        <div className="flex items-center space-x-2 text-sm text-secondary-500 dark:text-secondary-400">
                           <span>by {ticket.creator_first_name} {ticket.creator_last_name}</span>
                           <span>•</span>
                           <span>{new Date(ticket.created_at).toLocaleDateString()}</span>

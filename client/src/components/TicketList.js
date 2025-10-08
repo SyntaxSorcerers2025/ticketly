@@ -78,8 +78,8 @@ const TicketList = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-secondary-900">Support Tickets</h1>
-          <p className="text-secondary-600 mt-1">Manage and track your IT support requests</p>
+          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-100">Support Tickets</h1>
+          <p className="text-secondary-600 mt-1 dark:text-secondary-300">Manage and track your IT support requests</p>
         </div>
         {user?.role !== 3 && (
           <Link to="/tickets/create" className="btn-primary flex items-center space-x-2">
@@ -140,12 +140,12 @@ const TicketList = () => {
 
       {/* Tickets List */}
       {filteredTickets.length === 0 ? (
-        <div className="card text-center py-12">
+      <div className="card text-center py-12">
           <Ticket className="h-12 w-12 text-secondary-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-secondary-900 mb-2">
+        <h3 className="text-lg font-medium text-secondary-900 mb-2 dark:text-secondary-100">
             {tickets.length === 0 ? 'No tickets yet' : 'No tickets match your filters'}
           </h3>
-          <p className="text-secondary-600 mb-4">
+        <p className="text-secondary-600 mb-4 dark:text-secondary-300">
             {tickets.length === 0 
               ? 'Create your first support ticket to get started.'
               : 'Try adjusting your search or filter criteria.'
@@ -169,7 +169,7 @@ const TicketList = () => {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-secondary-900">
+                      <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100">
                         <Link 
                           to={`/tickets/${ticket.ticket_id}`}
                           className="hover:text-primary-600"
@@ -186,11 +186,11 @@ const TicketList = () => {
                       </span>
                     </div>
                     
-                    <p className="text-secondary-600 mb-3 line-clamp-2">
+                    <p className="text-secondary-600 mb-3 line-clamp-2 dark:text-secondary-300">
                       {ticket.description}
                     </p>
                     
-                    <div className="flex items-center justify-between text-sm text-secondary-500">
+                    <div className="flex items-center justify-between text-sm text-secondary-500 dark:text-secondary-400">
                       <div className="flex items-center space-x-4">
                         <span>#{ticket.ticket_id}</span>
                         <span>•</span>
@@ -201,8 +201,8 @@ const TicketList = () => {
                       
                       {ticket.assigned_to && (
                         <div className="text-right">
-                          <span className="text-secondary-500">Assigned to</span>
-                          <div className="font-medium text-secondary-900">
+                          <span className="text-secondary-500 dark:text-secondary-400">Assigned to</span>
+                          <div className="font-medium text-secondary-900 dark:text-secondary-100">
                             {ticket.assignee_first_name} {ticket.assignee_last_name}
                           </div>
                         </div>

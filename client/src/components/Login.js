@@ -48,16 +48,16 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-secondary-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center bg-secondary-50 py-12 px-4 sm:px-6 lg:px-8 dark:bg-secondary-900">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="flex justify-center">
             <Ticket className="h-12 w-12 text-primary-600" />
           </div>
-          <h2 className="mt-6 text-3xl font-bold text-secondary-900">
+          <h2 className="mt-6 text-3xl font-bold text-secondary-900 dark:text-secondary-100">
             Sign in to Ticketly
           </h2>
-          <p className="mt-2 text-sm text-secondary-600">
+          <p className="mt-2 text-sm text-secondary-600 dark:text-secondary-300">
             IT Support System for School Districts
           </p>
         </div>
@@ -65,7 +65,7 @@ const Login = () => {
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-secondary-700">
+              <label htmlFor="email" className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Email Address
               </label>
               <div className="mt-1 relative">
@@ -87,7 +87,7 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-secondary-700">
+              <label htmlFor="password" className="block text-sm font-medium text-secondary-700 dark:text-secondary-300">
                 Password
               </label>
               <div className="mt-1 relative">
@@ -131,7 +131,7 @@ const Login = () => {
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-secondary-600">
+            <p className="text-sm text-secondary-600 dark:text-secondary-300">
               Don't have an account?{' '}
               <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
                 Sign up here
