@@ -13,8 +13,10 @@ import {
   Calendar,
   MessageSquare,
   Send,
-  Edit
+  Edit,
+  Sparkles
 } from 'lucide-react';
+import { aiService } from '../services/aiService';
 
 const TicketDetails = () => {
   const { id } = useParams();
@@ -27,6 +29,8 @@ const TicketDetails = () => {
   const [submittingUpdate, setSubmittingUpdate] = useState(false);
   const [savingTicket, setSavingTicket] = useState(false);
   const [statusDraft, setStatusDraft] = useState(null);
+  const [aiSummary, setAiSummary] = useState('');
+  const [summarizing, setSummarizing] = useState(false);
 
   useEffect(() => {
     fetchTicketDetails();
@@ -99,6 +103,23 @@ const TicketDetails = () => {
       case 3: return 'Network';
       case 4: return 'Other';
       default: return 'Unknown';
+    }
+  };
+
+  const handleSummarizeTicket = async () => {
+    const source = `${ticket?.description || ''}\n\n${updates.map(u => `- ${u.message}`).join('\n')}`.trim();
+    if (!source) {
+      toast.info('Nothing to summarize yet.');
+      return;
+    }
+    setSummarizing(true);
+    try {
+      const summary = await aiService.summarizeAsync(source);
+      setAiSummary(summary);
+    } catch (e) {
+      toast.error('Failed to generate summary');
+    } finally {
+      setSummarizing(false);
     }
   };
 
@@ -299,6 +320,24 @@ const TicketDetails = () => {
 
         {/* Sidebar */}
         <div className="space-y-6">
+          {/* AI Summary */}
+          <div className="card">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg font-semibold text-secondary-900 dark:text-secondary-100 flex items-center">
+                <Sparkles className="h-5 w-5 mr-2" /> AI Summary
+              </h3>
+              <button
+                onClick={handleSummarizeTicket}
+                disabled={summarizing}
+                className="btn-secondary h-8 py-0"
+              >
+                {summarizing ? 'Summarizing...' : 'Summarize'}
+              </button>
+            </div>
+            <p className="text-sm text-secondary-700 whitespace-pre-wrap dark:text-secondary-300">
+              {aiSummary || 'Click Summarize to generate a quick summary of the ticket and updates.'}
+            </p>
+          </div>
           {/* Ticket Info */}
           <div className="card">
             <h3 className="text-lg font-semibold text-secondary-900 mb-4 dark:text-secondary-100">Ticket Information</h3>
