@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ticketService } from '../services/ticketService';
 import { aiService } from '../services/aiService';
 import { toast } from 'react-toastify';
-import { ArrowLeft, Save, Sparkles, Wand2 } from 'lucide-react';
+import { ArrowLeft, Save, Wand2 } from 'lucide-react';
 
 const CreateTicket = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +13,6 @@ const CreateTicket = () => {
     category: 1
   });
   const [loading, setLoading] = useState(false);
-  const [aiSummary, setAiSummary] = useState('');
-  const [aiLoading, setAiLoading] = useState(false);
   const [classifyLoading, setClassifyLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -37,22 +35,6 @@ const CreateTicket = () => {
       toast.error('Failed to create ticket. Please try again.');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleGenerateSummary = async () => {
-    if (!formData.description.trim()) {
-      toast.info('Please enter a description first.');
-      return;
-    }
-    setAiLoading(true);
-    try {
-      const summary = await aiService.summarizeAsync(formData.description);
-      setAiSummary(summary);
-    } catch (e) {
-      toast.error('Failed to generate summary');
-    } finally {
-      setAiLoading(false);
     }
   };
 
@@ -150,15 +132,6 @@ const CreateTicket = () => {
               <div className="mt-3 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={handleGenerateSummary}
-                  disabled={aiLoading || !formData.description.trim()}
-                  className="btn-secondary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <Sparkles className="h-4 w-4" />
-                  <span>{aiLoading ? 'Summarizing...' : 'AI: Summarize'}</span>
-                </button>
-                <button
-                  type="button"
                   onClick={handleSuggestFields}
                   disabled={classifyLoading || !formData.description.trim()}
                   className="btn-secondary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -167,12 +140,6 @@ const CreateTicket = () => {
                   <span>{classifyLoading ? 'Suggesting...' : 'AI: Suggest category/priority'}</span>
                 </button>
               </div>
-              {aiSummary && (
-                <div className="mt-3 p-3 rounded-md bg-secondary-50 text-secondary-800 border border-secondary-200 dark:bg-secondary-800 dark:text-secondary-100 dark:border-secondary-700">
-                  <div className="text-sm font-semibold mb-1">AI Summary</div>
-                  <p className="text-sm whitespace-pre-wrap">{aiSummary}</p>
-                </div>
-              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
