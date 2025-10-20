@@ -9,6 +9,7 @@ const CreateTicket = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
+    location: '',
     priority: 2,
     category: 1
   });
@@ -109,6 +110,22 @@ const CreateTicket = () => {
               <p className="text-xs text-secondary-500 mt-1 dark:text-secondary-400">
                 {formData.title.length}/200 characters
               </p>
+            </div>
+
+            <div>
+              <label htmlFor="location" className="block text-sm font-medium text-secondary-700 mb-2 dark:text-secondary-300">
+                Room / Location
+              </label>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                className="input-field"
+                placeholder="e.g., Room B205"
+                maxLength={100}
+              />
             </div>
 
             <div>
