@@ -14,6 +14,7 @@ router.get('/', authenticateToken, async (req, res) => {
         t.ticket_id,
         t.title,
         t.description,
+        t.location,
         t.priority,
         t.status,
         t.category,
@@ -64,6 +65,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
           t.ticket_id,
           t.title,
           t.description,
+          t.location,
           t.priority,
           t.status,
           t.category,
@@ -100,7 +102,8 @@ router.post('/', [
   body('title').trim().isLength({ min: 1, max: 200 }).withMessage('Title is required and must be less than 200 characters'),
   body('description').trim().isLength({ min: 1, max: 2000 }).withMessage('Description is required and must be less than 2000 characters'),
   body('priority').isInt({ min: 1, max: 4 }).withMessage('Valid priority is required'),
-  body('category').isInt({ min: 1, max: 4 }).withMessage('Valid category is required')
+  body('category').isInt({ min: 1, max: 4 }).withMessage('Valid category is required'),
+  body('location').optional().isString().isLength({ max: 100 }).withMessage('Location must be a string up to 100 characters')
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
@@ -108,7 +111,7 @@ router.post('/', [
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { title, description, priority, category } = req.body;
+    const { title, description, priority, category, location } = req.body;
     const pool = getPool();
 
     // Get next ticket ID
@@ -123,13 +126,14 @@ router.post('/', [
       .input('title', title)
       .input('description', description)
       .input('priority', priority)
+      .input('location', location || null)
       .input('category', category)
       .input('status', 1) // 1 = currently_open
       .input('createdAt', new Date())
       .input('updatedAt', new Date())
       .query(`
-        INSERT INTO Tickets (ticket_id, created_by, title, description, priority, status, category, created_at, updated_at)
-        VALUES (@ticketId, @createdBy, @title, @description, @priority, @status, @category, @createdAt, @updatedAt)
+        INSERT INTO Tickets (ticket_id, created_by, title, description, location, priority, status, category, created_at, updated_at)
+        VALUES (@ticketId, @createdBy, @title, @description, @location, @priority, @status, @category, @createdAt, @updatedAt)
       `);
 
     res.status(201).json({

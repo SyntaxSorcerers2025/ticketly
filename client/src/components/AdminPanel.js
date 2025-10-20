@@ -243,6 +243,9 @@ const AdminPanel = () => {
                         <div className="flex items-center space-x-2 mb-1">
                           <span className="font-medium text-secondary-900 dark:text-secondary-100">#{ticket.ticket_id}</span>
                           <span className="text-secondary-600 dark:text-secondary-300">{ticket.title}</span>
+                          {ticket.location && (
+                            <span className="text-secondary-500 dark:text-secondary-400">• {ticket.location}</span>
+                          )}
                         </div>
                         <div className="flex items-center space-x-2 text-sm text-secondary-500 dark:text-secondary-400">
                           <span>by {ticket.creator_first_name} {ticket.creator_last_name}</span>
@@ -288,6 +291,9 @@ const AdminPanel = () => {
                       Priority
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
+                      Location
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
                       Created By
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-secondary-500 uppercase tracking-wider">
@@ -323,6 +329,9 @@ const AdminPanel = () => {
                           <span className={`priority-badge ${priorityInfo.color}`}>
                             {priorityInfo.text}
                           </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
+                          {ticket.location || '—'}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-secondary-900">
                           {ticket.creator_first_name} {ticket.creator_last_name}

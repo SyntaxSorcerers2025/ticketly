@@ -342,6 +342,12 @@ const TicketDetails = () => {
           <div className="card">
             <h3 className="text-lg font-semibold text-secondary-900 mb-4 dark:text-secondary-100">Ticket Information</h3>
             <div className="space-y-4">
+              {ticket.location && (
+                <div>
+                  <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Location</label>
+                  <p className="text-secondary-900 dark:text-secondary-100">{ticket.location}</p>
+                </div>
+              )}
               <div>
                 <label className="block text-sm font-medium text-secondary-600 dark:text-secondary-300">Category</label>
                 <p className="text-secondary-900 dark:text-secondary-100">{getCategoryName(ticket.category)}</p>
